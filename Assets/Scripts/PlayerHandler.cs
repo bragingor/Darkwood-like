@@ -7,20 +7,20 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private float speed;
 
     private Vector2 movement;
+    private Vector2 mousePos;
+
     private Rigidbody2D _rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        //movement = InputSystem.actions.FindAction("Move");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Vector2 direction = new Vector2(movement.ReadValue<Vector2>().x, movement.ReadValue<Vector2>().y);
-        //transform.position = transform.right * direction * speed;
+        LookAt(mousePos);
     }
 
     private void FixedUpdate()
@@ -35,8 +35,7 @@ public class PlayerHandler : MonoBehaviour
 
     private void OnLook(InputValue inputValue)
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(inputValue.Get<Vector2>());
-        LookAt(mousePos);
+        mousePos = Camera.main.ScreenToWorldPoint(inputValue.Get<Vector2>());
     }
 
     private void LookAt(Vector3 target)
