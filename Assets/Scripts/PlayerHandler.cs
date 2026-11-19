@@ -5,16 +5,20 @@ using UnityEngine.InputSystem;
 public class PlayerHandler : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private LayerMask pickupWeaponLayer;
 
     private Vector2 movement;
     private Vector2 mousePos;
 
     private Rigidbody2D _rb;
+    private CircleCollider2D _circeCollider;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _circeCollider = GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -25,7 +29,7 @@ public class PlayerHandler : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.linearVelocity = movement * speed;
+        _rb.linearVelocity = transform.rotation * new Vector2(-movement.y, movement.x) * speed * Time.fixedDeltaTime;
     }
 
     private void OnMove(InputValue inputValue)
