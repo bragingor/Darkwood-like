@@ -19,7 +19,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public void Initialize(Item item, InventorySlot parent)
     {
         activeSlot = parent;
-        activeSlot.myItem = item;
+        activeSlot.myItem = this;
         myItem = item;
         itemIcon.sprite = item.sprite;
     }

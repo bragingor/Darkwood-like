@@ -75,8 +75,18 @@ public class Inventory : MonoBehaviour
             case SlotTag.Head:
                 if (item == null)
                 {
+                    //Destroy item.eqipmentPrefab on the player object
                     Debug.Log("Unequiped helmet on " + tag);
                 }
+                else
+                {
+                    //Instantiate item.equipmentPrefab on the player object
+                    Debug.Log("Equipped" + item.myItem.name + " on " + tag);
+                }
+                break;
+            case SlotTag.Body:
+                break;
+            case SlotTag.None:
                 break;
         }
     }
