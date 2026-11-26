@@ -8,12 +8,10 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            if (Inventory.carriedItem == null) return;
-            if (myTag != SlotTag.None && Inventory.carriedItem.myItem.itemTag != myTag) return;
-            SetItem(Inventory.carriedItem);
-        }
+        Debug.Log("Set item");
+        if (Inventory.carriedItem == null) return;
+        if (myTag != SlotTag.None && Inventory.carriedItem.myItem.itemTag != myTag) return;
+        SetItem(Inventory.carriedItem);
     }
 
     public void SetItem(InventoryItem item)

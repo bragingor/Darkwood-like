@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
     {
         if (carriedItem == null) return;
 
-        carriedItem.transform.position = Input.mousePosition;
+        carriedItem.transform.position = PlayerHandler.mousePos;
     }
 
     public void SetCarriedItem(InventoryItem item)

@@ -9,7 +9,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private LayerMask weaponLayer;
 
     private Vector2 movement;
-    private Vector2 mousePos;
+    [HideInInspector] public static Vector2 mousePos;
 
     private Rigidbody2D _rb;
     
@@ -45,7 +45,7 @@ public class PlayerHandler : MonoBehaviour
     private void OnInteract(InputValue inputValue)
     {
         var weapon = Physics2D.OverlapCircle(transform.position, pickUpradius, weaponLayer);
-        if (weapon)
+        if (weapon != null)
         {
             weapon.gameObject.transform.SetParent(transform, true);
             weapon.gameObject.GetComponent<BoxCollider2D>().enabled = false;
